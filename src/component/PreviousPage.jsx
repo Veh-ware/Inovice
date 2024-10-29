@@ -326,7 +326,7 @@ const PreviousPage = () => {
         console.log(updatedBrandData)
         try {
             const paymentResponse = await axios.post(
-                'https://stripe-backend-sand.vercel.app/api/generate-payment',
+                'https://invoicebackend-nu.vercel.app/api/generate-payment',
                 updatedBrandData,
                 {
                     headers: { 'Content-Type': 'application/json' }
