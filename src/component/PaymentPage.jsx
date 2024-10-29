@@ -496,174 +496,147 @@ const PaymentPage = () => {
 
 
     return (
-        <div className="h-full bg-slate-100 p-16">
-            {productDetails && productDetails.product_image && productDetails.product_title && productDetails.product_description && productPrice ? (
-                <>
-                    <div className='flex flex-col md:flex-row w-full max-w-5xl mx-auto gap-5 shadow-lg rounded-2xl bg-white'>
-                        <div className="flex-1 bg-blue-950 p-6 md:p-10 rounded-l-2xl shadow-lg">
-                            <img
-                                className="w-full max-h-80 object-cover rounded-xl shadow-xl mb-6"
-                                src={productDetails.product_image}
-                                alt={productDetails.product_title}
-                            />
-                            <div className="space-y-8">
-
-                                {/* Customer Details Section */}
-                                <div>
-                                    <h2 className="text-white text-3xl font-semibold mb-3">Customer Details</h2>
-                                    <p className="text-white text-xl pl-2 ">
-                                        <span className="font-semibold text-blue-400">Customer Email:</span> {clientDetails.clientEmail}
-                                    </p>
-                                    <p className="text-white text-xl pl-2 ">
-                                        <span className="font-semibold text-blue-400">Name:</span> {clientDetails.clientName}
-                                    </p>
-
-                                    {clientDetails.clientNum == " " ? <div></div> : (
-                                        <p className="text-white text-xl pl-2">
-                                            <span className="font-semibold text-blue-400">Contact Number: </span>  {clientDetails.clientNum}
-                                        </p>
-                                    )}
-
-                                </div>
-
-
-                                {/* Brand Details Section */}
-                                <div>
-                                    <h2 className="text-white text-3xl font-semibold mb-3">Details</h2>
-                                    <p className="text-white text-xl     mb-2">
-                                        <span className="font-semibold text-blue-400 pl-2">Description:</span> {productDetails.product_description}
-                                    </p>
-                                </div>
-
-
-                                <div>
-                                    <h2 className='text-white text-3xl font-semibold mb-2'>Total</h2>
-                                    <p className="text-white text-4xl mb-2 font-bold">
-                                        USD: {productPrice}
-                                    </p>
-                                </div>
-
-                                {/* Brand Title */}
-                                <h1 className="text-4xl text-center font-bold  pt-12 text-white">VEHWARE LLC.</h1>
+        <div className="h-full bg-slate-100 p-4 sm:p-8 md:p-16">
+        {productDetails && productDetails.product_image && productDetails.product_title && productDetails.product_description && productPrice ? (
+          <>
+            <div className='flex flex-col md:flex-row w-full max-w-5x2 mx-auto gap-5 shadow-lg rounded-2xl bg-white'>
+              {/* Left Section (Product and Customer Details) */}
+              <div className="flex-1 bg-blue-950 p-4 sm:p-6 md:p-10 rounded-l-2xl shadow-lg">
+                <img
+                  className="w-full max-h-60 sm:max-h-80 object-cover rounded-xl shadow-xl mb-4 sm:mb-6"
+                  src={productDetails.product_image}
+                  alt={productDetails.product_title}
+                />
+                <div className="space-y-4 sm:space-y-8">
+                  {/* Customer Details Section */}
+                  <div>
+                    <h2 className="text-white text-2xl sm:text-3xl font-semibold mb-2 sm:mb-3">Customer Details</h2>
+                    <p className="text-white text-lg sm:text-xl pl-2">
+                      <span className="font-semibold text-blue-400">Customer Email:</span> {clientDetails.clientEmail}
+                    </p>
+                    <p className="text-white text-lg sm:text-xl pl-2">
+                      <span className="font-semibold text-blue-400">Name:</span> {clientDetails.clientName}
+                    </p>
+                    {clientDetails.clientNum && (
+                      <p className="text-white text-lg sm:text-xl pl-2">
+                        <span className="font-semibold text-blue-400">Contact Number: </span>  {clientDetails.clientNum}
+                      </p>
+                    )}
+                  </div>
+                  {/* Brand Details Section */}
+                  <div>
+                    <h2 className="text-white text-2xl sm:text-3xl font-semibold mb-2 sm:mb-3">Details</h2>
+                    <p className="text-white text-lg sm:text-xl mb-2">
+                      <span className="font-semibold text-blue-400 pl-2">Description:</span> {productDetails.product_description}
+                    </p>
+                  </div>
+                  {/* Price Section */}
+                  <div>
+                    <h2 className="text-white text-2xl sm:text-3xl font-semibold mb-2">Total</h2>
+                    <p className="text-white text-3xl sm:text-4xl mb-2 font-bold">USD: {productPrice}</p>
+                  </div>
+                  {/* Brand Title */}
+                  <h1 className="text-sm sm:text-base text-center font-bold pt-6 sm:pt-8 text-white">VEHWARE LLC.</h1>
 
 
-
-                            </div>
-                        </div>
-
-
-                        <div className='flex-1 p-5 md:p-10 flex flex-col justify-center'>
-
-                            <h1 className='text-5xl font-bold py-10 text-center flex justify-between items-center'>
-                                <span className="flex items-center">
-                                    {/* <FontAwesomeIcon icon={faLock} className='h-10 w-10' /> */}
-                                    Payment
-                                </span>
-                                <div className='ml-4'>
-                                    <img src='/safety.png' className='h-12 rounded-md' />
-                                </div>
-                            </h1>
-
-                            <form onSubmit={handleSubmit}>
-                                {error && <p className="text-red-600 text-center py-2 bg-red-200 rounded-3xl">{error}</p>}
-
-                                {/* Card Holder Name */}
-                                <div className="bg-white p-5">
-                                    <label className="block mb-2 font-semibold text-gray-700">Card Holder Name</label>
-                                    <input
-                                        type="text"
-                                        value={cardHolderName}
-                                        onChange={(e) => setCardHolderName(e.target.value)}
-                                        className="w-full border rounded-md p-3 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm"
-                                        placeholder="Enter card holder's name"
-                                        required
-                                    />
-                                </div>
-
-                                {/* Card Number */}
-                                <div className="bg-white p-5">
-                                    <label className="block mb-2 font-semibold text-gray-700">Card Number</label>
-                                    <CardNumberElement className="w-full border rounded-md p-3 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm" />
-                                </div>
-
-                                {/* Expiry Date and CVC */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="bg-white p-5">
-                                        <label className="block mb-2 font-semibold text-gray-700">Expiry Date</label>
-                                        <CardExpiryElement className="w-full border rounded-md p-3 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm" />
-                                    </div>
-                                    <div className="bg-white p-5">
-                                        <label className="block mb-2 font-semibold text-gray-700">CVC</label>
-                                        <CardCvcElement className="w-full border rounded-md p-3 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm" />
-                                    </div>
-                                </div>
-
-                                {/* Postal Code */}
-                                <div className="bg-white p-5">
-                                    <label className="block mb-2 font-semibold text-gray-700">Zip Code</label>
-                                    <input
-                                        minLength={1}
-                                        maxLength={10}
-                                        type="text"
-                                        value={postalCode}
-                                        onChange={(e) => setPostalCode(e.target.value)}
-                                        className="w-full border rounded-md p-3 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm"
-                                        placeholder="Enter your Zip code"
-                                    />
-                                </div>
-
-                                {/* Submit Button */}
-                                <button
-                                    type="submit"
-                                    disabled={isPaid == 'complete' || !stripe || loading || paid }
-                                    className={`w-full py-3 px-4 mt-8 font-semibold text-white rounded-md transition-colors duration-300 ${!stripe || loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
-                                >
-                                    {loading ? (
-                                        <div className="flex items-center justify-center">
-                                            {paid ? 'Paid' : 'Processing'}
-                                        </div>
-                                    ) : (
-                                        <span className="flex items-center justify-center">
-                                            <FontAwesomeIcon icon={faLock} className='h-4 w-4 mr-2' />
-                                            Pay Now
-                                        </span>
-                                    )}
-                                </button>
-                            </form>
-                            {/* Payment Safety Logos */}
-                            <div className="flex justify-center mt-6 space-x-6">
-                                {/* Place payment safety logos here */}
-                                <img src='/checkout.jpeg' className='h-20 rounded-md' />
-                            </div>
-                        </div>
-                    </div>
-                </>
-            ) : null}
-
-            {isPaid === 'completed' ? (
-                <div className="flex justify-center mt-4">
-                <div className="bg-red-600 shadow-lg rounded-lg p-4 max-w-md text-center">
-                    <div className="flex items-center flex-col justify-center">
-                        <p className="text-lg font-semibold text-white">
-                            This transaction has already been processed. If you feel this is incorrect, please contact the relevant sales representative.
-                        </p>
-                    </div>
                 </div>
+              </div>
+      
+              {/* Right Section (Payment Form) */}
+              <div className="flex-1 p-4 sm:p-5 md:p-10 flex flex-col justify-center">
+                <h1 className='text-4xl sm:text-5xl font-bold py-6 sm:py-10 text-center flex justify-between items-center'>
+                  <span className="flex items-center">Payment</span>
+                  <div className='ml-4'>
+                    <img src='/safety.png' className='h-10 sm:h-12 rounded-md' />
+                  </div>
+                </h1>
+                <form onSubmit={handleSubmit}>
+                  {error && <p className="text-red-600 text-center py-2 bg-red-200 rounded-3xl">{error}</p>}
+                  {/* Card Holder Name */}
+                  <div className="bg-white p-3 sm:p-5">
+                    <label className="block mb-2 font-semibold text-gray-700">Card Holder Name</label>
+                    <input
+                      type="text"
+                      value={cardHolderName}
+                      onChange={(e) => setCardHolderName(e.target.value)}
+                      className="w-full border rounded-md p-2 sm:p-3 py-3 sm:py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm"
+                      placeholder="Enter card holder's name"
+                      required
+                    />
+                  </div>
+                  {/* Card Number */}
+                  <div className="bg-white p-3 sm:p-5">
+                    <label className="block mb-2 font-semibold text-gray-700">Card Number</label>
+                    <CardNumberElement className="w-full border rounded-md p-2 sm:p-3 py-3 sm:py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm" />
+                  </div>
+                  {/* Expiry Date and CVC */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="bg-white p-3 sm:p-5">
+                      <label className="block mb-2 font-semibold text-gray-700">Expiry Date</label>
+                      <CardExpiryElement className="w-full border rounded-md p-2 sm:p-3 py-3 sm:py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm" />
+                    </div>
+                    <div className="bg-white p-3 sm:p-5">
+                      <label className="block mb-2 font-semibold text-gray-700">CVC</label>
+                      <CardCvcElement className="w-full border rounded-md p-2 sm:p-3 py-3 sm:py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm" />
+                    </div>
+                  </div>
+                  {/* Postal Code */}
+                  <div className="bg-white p-3 sm:p-5">
+                    <label className="block mb-2 font-semibold text-gray-700">Zip Code</label>
+                    <input
+                      minLength={1}
+                      maxLength={10}
+                      type="text"
+                      value={postalCode}
+                      onChange={(e) => setPostalCode(e.target.value)}
+                      className="w-full border rounded-md p-2 sm:p-3 py-3 sm:py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 shadow-sm"
+                      placeholder="Enter your Zip code"
+                    />
+                  </div>
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isPaid == 'complete' || !stripe || loading || paid }
+                    className={`w-full py-2 sm:py-3 px-4 mt-6 sm:mt-8 font-semibold text-white rounded-md transition-colors duration-300 ${!stripe || loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+                  >
+                    {loading ? (
+                      <div className="flex items-center justify-center">{paid ? 'Paid' : 'Processing'}</div>
+                    ) : (
+                      <span className="flex items-center justify-center">Pay Now</span>
+                    )}
+                  </button>
+                </form>
+                {/* Payment Safety Logos */}
+                <div className="flex justify-center mt-4 sm:mt-6 space-x-4 sm:space-x-6">
+                  <img src='/checkout.jpeg' className='h-16 sm:h-20 rounded-md' />
+                </div>
+              </div>
             </div>
-            
-            ) : <div></div>}
-
-
-            {error && (
-                <div className="flex items-center justify-center min-h-screen bg-gray-100">
-                    <div className="bg-red-100 border border-red-400 text-red-700 rounded-lg p-4 max-w-md flex items-center">
-                        <ExclamationCircleIcon className="h-6 w-6 mr-3" />
-                        <p className="text-sm font-semibold">{error}</p>
-                    </div>
-                </div>
-            )}
-
-        </div>
+          </>
+        ) : null}
+      
+        {/* Payment Already Completed Message */}
+        {isPaid === 'completed' && (
+          <div className="flex justify-center mt-4">
+            <div className="bg-red-600 shadow-lg rounded-lg p-4 max-w-md text-center">
+              <p className="text-lg font-semibold text-white">
+                This transaction has already been processed. If you feel this is incorrect, please contact the relevant sales representative.
+              </p>
+            </div>
+          </div>
+        )}
+      
+        {/* Error Message */}
+        {error && (
+          <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <div className="bg-red-100 border border-red-400 text-red-700 rounded-lg p-4 max-w-md flex items-center">
+              <ExclamationCircleIcon className="h-6 w-6 mr-3" />
+              <p className="text-sm font-semibold">{error}</p>
+            </div>
+          </div>
+        )}
+      </div>
+      
 
     );
 };
