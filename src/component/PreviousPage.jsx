@@ -319,14 +319,14 @@ const PreviousPage = () => {
             amount: brandAmount * 100,
             image: selectedBrand.url,
             clientName,
-            clientNum : clientNum ? clientNum : ' ',
-            clientEmail,
+            clientNum:  clientNum ? clientNum : ' ',
+            clientEmail  ,
         };
 
         console.log(updatedBrandData)
         try {
             const paymentResponse = await axios.post(
-                'http://localhost:5000/api/generate-payment',
+                'https://stripe-backend-sand.vercel.app/api/generate-payment',
                 updatedBrandData,
                 {
                     headers: { 'Content-Type': 'application/json' }
