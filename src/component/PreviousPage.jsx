@@ -444,7 +444,7 @@ const PreviousPage = () => {
                             value={clientNum}
                             onChange={(e) => setClientNum(e.target.value)}
                             className="w-full p-4 border border-gray-500 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
-                            required
+                            
                         />
                     </div>
                 </div>
