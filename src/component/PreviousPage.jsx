@@ -319,7 +319,7 @@ const PreviousPage = () => {
             amount: brandAmount * 100,
             image: selectedBrand.url,
             clientName,
-            clientNum,
+            clientNum : clientNum ? clientNum : ' ',
             clientEmail,
         };
 
