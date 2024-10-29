@@ -326,17 +326,20 @@ const PreviousPage = () => {
         console.log(updatedBrandData)
         try {
             const paymentResponse = await axios.post(
-                'https://stripe-backend-sand.vercel.app/api/generate-payment',
+                'http://localhost:5000/api/generate-payment',
                 updatedBrandData,
                 {
                     headers: { 'Content-Type': 'application/json' }
                 }
             );
-            const paymentData = paymentResponse.data
-            
-            if (paymentData.status === 200 ) {
+            const paymentData = paymentResponse.data.data.data
+
+            console.log(paymentResponse.data)
+
+            console.log(paymentData)
+            if (paymentResponse.data.status === 200) {
                 console.log(paymentData)
-                const generatedUrl = `/payment/${paymentData.session.sessionId}`;
+                const generatedUrl = `/payment/${paymentData.sessionId}`;
                 setURL(generatedUrl);
                 console.log(generatedUrl)
                 Swal.fire({
