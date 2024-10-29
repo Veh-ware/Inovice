@@ -359,10 +359,10 @@ const PaymentPage = () => {
     const elements = useElements();
     const navigate = useNavigate();
 
-    useEffect(() => {
+   useEffect(() => {
         const fetchPaymentDetails = async () => {
             try {
-                const response = await fetch(`https://stripe-backend-sand.vercel.app/api/get-payment-details/${sessionId}`);
+                const response = await fetch(`http://localhost:5000/api/get-payment-details/${sessionId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
