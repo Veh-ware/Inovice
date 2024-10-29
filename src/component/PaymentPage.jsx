@@ -355,6 +355,7 @@ const PaymentPage = () => {
     const [isPaid, setIsPaid] = useState('pending');
     const [paid, setPaid] = useState(false);
     const [cardHolderName, setCardHolderName] = useState('')
+            const [payError, setPayError] = useState(null)
     const stripe = useStripe();
     const elements = useElements();
     const navigate = useNavigate();
@@ -399,7 +400,7 @@ const PaymentPage = () => {
         }
 
         if(isPaid == 'completed' ){
-            setError('Payment is already completed!')
+            setPayError('Payment is already completed!')
             return;
         }
 
@@ -447,7 +448,7 @@ const PaymentPage = () => {
 
         if (error) {
             console.error('Payment error:', error.message);
-            setError('Card details are invalid!.');
+            setPayError('Card details are invalid!.');
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             try {
                 console.log("paymentIntent=>", paymentIntent.status)
@@ -551,7 +552,7 @@ const PaymentPage = () => {
                   </div>
                 </h1>
                 <form onSubmit={handleSubmit}>
-                  {error && <p className="text-red-600 text-center py-2 bg-red-200 rounded-3xl">{error}</p>}
+                  {payError && <p className="text-red-600 text-center py-2 bg-red-200 rounded-3xl">{payError}</p>}
                   {/* Card Holder Name */}
                   <div className="bg-white p-3 sm:p-5">
                     <label className="block mb-2 font-semibold text-gray-700">Card Holder Name</label>
