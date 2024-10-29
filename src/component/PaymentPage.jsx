@@ -518,7 +518,7 @@ const PaymentPage = () => {
                                         <span className="font-semibold text-blue-400">Name:</span> {clientDetails.clientName}
                                     </p>
 
-                                    {clientDetails.clientNum && (
+                                    {clientDetails.clientNum == " " ? <div></div> : (
                                         <p className="text-white text-xl pl-2">
                                             <span className="font-semibold text-blue-400">Contact Number: </span>  {clientDetails.clientNum}
                                         </p>
