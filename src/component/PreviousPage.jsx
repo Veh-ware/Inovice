@@ -82,7 +82,7 @@
 //         };
 
 //         try {
-//             const paymentResponse = await fetch('https://api-vehwareinvoice.vercel.app/api/generate-payment', {
+//             const paymentResponse = await fetch('https://invoicebackend-nu.vercel.app/api/generate-payment', {
 //                 method: 'POST',
 //                 headers: { 'Content-Type': 'application/json' },
 //                 body: JSON.stringify(updatedBrandData),
@@ -326,7 +326,7 @@ const PreviousPage = () => {
         console.log(updatedBrandData)
         try {
             const paymentResponse = await axios.post(
-                'https://api-vehwareinvoice.vercel.app/api/generate-payment',
+                'https://invoicebackend-nu.vercel.app/api/generate-payment',
                 updatedBrandData,
                 {
                     headers: { 'Content-Type': 'application/json' }
