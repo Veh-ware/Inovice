@@ -280,6 +280,11 @@ const brands = [
     { id: 16, title: "Vehware 2.0", url: "https://firebasestorage.googleapis.com/v0/b/vehware-logo.appspot.com/o/office%20logos-16.png?alt=media&token=8db3f83d-2d4e-4988-bd4e-3d4e1cdaaace" },
     { id: 17, title: "Design69", url: "https://firebasestorage.googleapis.com/v0/b/vehware-logo.appspot.com/o/office%20logos-17%20(1).png?alt=media&token=c77d1dbc-7eab-4186-b5a7-e164ccefd95e" },
     { id: 18, title: "Webtach", url: "https://firebasestorage.googleapis.com/v0/b/vehware-logo.appspot.com/o/office%20logos-18.png?alt=media&token=9e76afb2-79ea-4d37-b409-9e22110d656c" },
+    { id: 19, title: "Self Book Publisher", url: "https://firebasestorage.googleapis.com/v0/b/vehware-logo.appspot.com/o/Self%20book%20publisher%20logo-02.png?alt=media&token=76d36cc0-4a9f-4d69-91e9-9ee7378e760f" },
+    { id: 20, title: "Amazon Ebooks", url: "https://firebasestorage.googleapis.com/v0/b/vehware-logo.appspot.com/o/amazon%20ebooks%20logo-02.png?alt=media&token=f082070e-2385-4b0f-a0b3-deda87d49715" },
+    { id: 21, title: "Your Books Publisher", url: "https://firebasestorage.googleapis.com/v0/b/vehware-logo.appspot.com/o/your%20books%20publisher%20logo%20003-02.png?alt=media&token=619998b1-b3e6-4ba8-948d-27281abc4f4c" },
+    { id: 22, title: "Trademark-gov.us", url: "https://firebasestorage.googleapis.com/v0/b/vehware-logo.appspot.com/o/Trademark-gov.us%20logo-02%20(1).png?alt=media&token=f84d5d10-71d4-4e56-beb5-0ef1a6aff333" },
+    { id: 23, title: "USPTO Trademark Revive", url: "https://firebasestorage.googleapis.com/v0/b/vehware-logo.appspot.com/o/USPTO%20Trademark%20Revive%20logo%20001-01.png?alt=media&token=cd70b183-73ac-4c19-b987-1c823cd411f5" },
 ];
 
 
